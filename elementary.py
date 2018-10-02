@@ -30,6 +30,11 @@ class Particle(object):
         Sets the initial floats of the .position tuple to the three values (x, y, z) passed into the constructor,
         sets the mass to 1.0,
         and sets the initial momentum to (0.0, 0.0, 0.0)
+
+        Args:
+            x: the x position
+            y: the y position
+            z: the z position
         """
         self.position = (x, y, z)
         self.mass = 1.0
@@ -62,20 +67,65 @@ class ChargedParticle(Particle):
     Attributes:
         charge: the mass of the particle (float)
     """
+
     charge = 0.0
 
     def __init__(self, x, y, z):
+        """
+        Class constructor
+        Sets the initial floats of the .position tuple to the three values (x, y, z) passed into the parent constructor,
+        sets the mass to 1.0 through the parent
+        and sets the initial momentum to (0.0, 0.0, 0.0) through the parent constructor
+        sets the charge to 1.0
+
+        Args:
+            x: the x position
+            y: the y position
+            z: the z position
+        """
         super(ChargedParticle, self).__init__(x, y, z)
         self.charge = 1.0
 
 class Electron(ChargedParticle):
+    """Class Description
+    The Electron class creates an Electron object inherited from ChargedParticle
+    """
+
     def __init__(self, x, y, z):
+        """
+        Class constructor
+        Sets the initial floats of the .position tuple to the three values (x, y, z) passed into the parent constructor,
+        and sets the initial momentum to (0.0, 0.0, 0.0) through the parent constructor
+        sets the mass to the mass of the electron
+        sets the charge to the charge of the electron
+
+        Args:
+            x: the x position
+            y: the y position
+            z: the z position
+        """
         super(Electron, self).__init__(x, y, z)
         self.mass = constants.m_e
         self.charge = -constants.e
 
 class Proton(ChargedParticle):
+    """Class Description
+    The Proton class creates an Proton object inherited from ChargedParticle
+    """
+
     def __init__(self, x, y, z):
+        """
+        Class constructor
+        Sets the initial floats of the .position tuple to the three values (x, y, z) passed into the parent constructor,
+        and sets the initial momentum to (0.0, 0.0, 0.0) through the parent constructor
+        sets the mass to the mass of the proton
+        sets the charge to the charge of the proton
+
+        Args:
+            x: the x position
+            y: the y position
+            z: the z position
+        """
         super(Proton, self).__init__(x, y, z)
         self.mass = constants.m_p
         self.charge = constants.e
