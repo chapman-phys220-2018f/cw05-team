@@ -9,7 +9,8 @@
 from scipy import constants
 
 """Module Description
-This module includes a Particle object
+This module includes a Particle object, ChargedParticle(Particle) object,
+Electron(ChargedParticle) object, Proton(ChargedParticle) object
 """
 
 class Particle(object):
@@ -31,7 +32,7 @@ class Particle(object):
         and sets the initial momentum to (0.0, 0.0, 0.0)
         """
         self.position = (x, y, z)
-        mass = 1.0
+        self.mass = 1.0
         self.momentum = (0.0, 0.0, 0.0)
 
     def impulse(self, px, py, pz):
@@ -52,9 +53,15 @@ class Particle(object):
         Args:
             dt: a time increment to move the position of the paricle
         """
-        self.position = ((self.momentum[0]/self.mass)*dt, (self.momentum[1]/self.mass)*dt, (self.momentum[2]/self.mass)*dt)
+        self.position = (self.position[0]+(self.momentum[0]/self.mass)*dt, self.position[1]+(self.momentum[1]/self.mass)*dt, self.position[2]+(self.momentum[2]/self.mass)*dt)
 
 class ChargedParticle(Particle):
+    """Class Description
+    The ChargedParticle class creates a ChargedParticle object inherited from Particle
+
+    Attributes:
+        charge: the mass of the particle (float)
+    """
     charge = 0.0
 
     def __init__(self, x, y, z):
